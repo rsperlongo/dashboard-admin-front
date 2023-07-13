@@ -1,27 +1,39 @@
-<div class="card">
-    <h4 class="card-header">Login</h4>
-    <div class="card-body">
-        <form [formGroup]="form" (ngSubmit)="onSubmit()">
-            <div class="mb-3">
-                <label class="form-label">Username</label>
-                <input type="text" formControlName="username" class="form-control" />
-                <div *ngIf="username.invalid && (username.dirty || username.touched)"
-                  class="alert alert-danger">Name is required
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-7">
+            <div class="background-login">
+                <h1>Bem vindo ao AdminChurch</h1>
+            </div>
+        </div>
+        <div class="col-5 mt-5">
+            <h2>Para acessar a plataforma é necessário fazer o login de sua conta</h2>
+            <div class="card">
+                <div class="card-body">
+                    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                        <div class="mb-3">
+                            <label class="form-label">Username</label>
+                            <input type="text" formControlName="username" class="form-control" />
+                            <div *ngIf="username.invalid && (username.dirty || username.touched)"
+                              class="alert alert-danger">Name is required
+                            </div>
+                        <div class="mb-3">
+                            <label class="form-label">Password</label>
+                            <input type="password" formControlName="password" class="form-control"  />
+                            <div *ngIf="password.invalid && (password.dirty || password.touched)"
+                              class="alert alert-danger">Password is required
+                            </div>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button [disabled]="form.invalid" class="btn btn-primary">
+                                <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
+                                Login
+                            </button>
+                            <a routerLink="../register" class="btn btn-link">Register</a>
+                        </div>
+                        </div>
+                    </form>
                 </div>
-            <div class="mb-3">
-                <label class="form-label">Password</label>
-                <input type="password" formControlName="password" class="form-control"  />
-                <div *ngIf="password.invalid && (password.dirty || password.touched)"
-                  class="alert alert-danger">Password is required
-                </div>
-            </div>
-            <div>
-                <button [disabled]="form.invalid" class="btn btn-primary">
-                    <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
-                    Login
-                </button>
-                <a routerLink="../register" class="btn btn-link">Register</a>
-            </div>
-            </div>
-        </form>
+        </div>
     </div>
+</div>
+
