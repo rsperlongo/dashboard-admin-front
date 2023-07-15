@@ -6,3 +6,21 @@
   height: fit-content;
   padding-bottom: 100%;
 }
+
+label {
+  font-size: 14px;
+  color: rgb(68, 68, 68);
+  font-weight: bold;
+}
+.title {
+  width: 305px;
+  margin: 5px;
+  padding: 5px;
+  height: fit-content;
+  color: white;
+  background-color: black;
+}
+
+.card {
+  width: 80%;
+}
