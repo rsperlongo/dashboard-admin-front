@@ -11,9 +11,9 @@ export class LoginComponent implements OnInit  {
   title = 'dashboard-admin-frontend';
   form!: FormGroup;
   loading = false;
-  submitted = false
+  submitted = false;
 
-  constructor(private formBuilder: FormBuilder,) {}
+  constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.form = this.formBuilder.group({
