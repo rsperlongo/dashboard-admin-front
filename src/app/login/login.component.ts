@@ -1,19 +1,21 @@
-import { Component, OnInit  } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation  } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class LoginComponent implements OnInit  {
-  title = 'dashboard-admin-frontend';
   form!: FormGroup;
   loading = false;
   submitted = false;
+  content: any
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder, private modalService: NgbModal) {}
 
   ngOnInit() {
     this.form = this.formBuilder.group({
@@ -37,4 +39,8 @@ export class LoginComponent implements OnInit  {
     }
     this.loading = true;
   }
+
+  openBackDropCustomClass(content: any) {
+		this.modalService.open(content, { backdropClass: 'light-blue-backdrop' });
+	}
 }

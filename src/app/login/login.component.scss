@@ -1,4 +1,4 @@
-@import '../../styles.scss';
+@import "../../styles.scss";
 
 .background-login {
   background-color: rgb(92, 207, 207);
@@ -28,4 +28,15 @@ label {
   color: rgb(190, 18, 18);
   border: 0;
   height: fit-content;
+}
+
+.dark-modal .modal-content {
+  background-color: #292b2c;
+  color: white;
+}
+.dark-modal .close {
+  color: white;
+}
+.light-blue-backdrop {
+  background-color: #5cb3fd;
 }
