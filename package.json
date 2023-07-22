@@ -8,8 +8,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve": " json-server --watch login.json",
-    "build:prod": "ng build --prod",
-    "test:prod": "ng test --browsers=ChromeHeadless --watch=false --code-coverage"
+    "build:ci": "ng build --prod",
+    "test:ci": "ng test --watch=false --browsers=ChromeHeadlessCustom"
   },
   "private": true,
   "dependencies": {
@@ -40,6 +40,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
+    "puppeteer": "^20.9.0",
     "typescript": "~5.0.2"
   }
 }
