@@ -1,40 +1,109 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-7">
+        <div class="col-8">
             <div class="background-login">
                 <h1>Bem vindo ao AdminChurch</h1>
             </div>
         </div>
-        <div class="col-5 mt-5">
+        <div class="col-4 mt-5">
             <h1 class="title mb-4">ADMINCHURCH</h1>
             <h2>Para acessar a plataforma é necessário fazer o login de sua conta</h2>
-            <div class="card ">
+            <div class="card">
                 <div class="card-body">
                     <form [formGroup]="form" (ngSubmit)="onSubmit()">
                         <div class="mb-3">
-                            <label class="form-label">Username</label>
+                            <label class="form-label">Usuário (e-mail)</label>
                             <input type="text" formControlName="username" class="form-control" />
                             <div *ngIf="username.invalid && (username.dirty || username.touched)"
-                              class="alert alert-danger">Name is required
+                                class="alert alert-danger mt-1">Campo usuário obrigatório
                             </div>
-                        <div class="mb-3">
-                            <label class="form-label">Password</label>
-                            <input type="password" formControlName="password" class="form-control"  />
-                            <div *ngIf="password.invalid && (password.dirty || password.touched)"
-                              class="alert alert-danger">Password is required
+                            <div class="mb-3">
+                                <label class="form-label">Senha</label>
+                                <input type="password" formControlName="password" class="form-control" />
+                                <div *ngIf="password.invalid && (password.dirty || password.touched)"
+                                    class="alert alert-danger mt-1">Campo senha obrigatório
+                                </div>
                             </div>
-                        </div>
-                        <div class="d-grid gap-2">
-                            <button [disabled]="form.invalid" class="btn btn-primary">
-                                <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
-                                Login
-                            </button>
-                            <a routerLink="../register" class="btn btn-link">Register</a>
-                        </div>
+                            <div class="d-grid gap-2">
+                                <button [disabled]="form.invalid" class="btn btn-primary">
+                                    <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
+                                    Login
+                                </button>
+                                <p>Não é cadastrado? Clique registre-se agora!</p>
+                                <!-- Modal -->
+                                <ng-template #content let-modal>
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Registro de Usário</h4>
+                                        <button type="button" class="btn-close" aria-label="Fechar"
+                                            (click)="modal.dismiss('Cross click')"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="card">
+                                            <h4 class="card-header">Preencha o formulário</h4>
+                                            <div class="card-body">
+                                                <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Nome</label>
+                                                        <input type="text" formControlName="firstName"
+                                                            class="form-control" />
+                                                        <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"
+                                                            class="alert alert-danger mt-1">Campo obrigatório
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Sobrenome</label>
+                                                        <input type="text" formControlName="lastName"
+                                                            class="form-control" />
+                                                        <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)"
+                                                            class="alert alert-danger mt-1">Campo Sobrenome obrigatório
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Usuário</label>
+                                                        <input type="text" formControlName="user"
+                                                            class="form-control" />
+                                                        <div *ngIf="user.invalid && (user.dirty || user.touched)"
+                                                            class="alert alert-danger mt-1">Campo usuário obrigatório
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Senha</label>
+                                                        <input type="password" formControlName="pass"
+                                                            class="form-control" required minlength="4" />
+                                                        <div *ngIf="pass.invalid && (pass.dirty || pass.touched)"
+                                                            class="alert alert-danger mt-1">Campo senha obrigatório
+                                                        </div>
+                                                        <div *ngIf="pass.errors?.['minlength']"
+                                                            class="alert alert-danger mt-1">
+                                                            Senha deve ter pelo menos 4 caracteres.
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <button [disabled]="loading" class="btn btn-info">
+                                                            <span *ngIf="loading"
+                                                                class="spinner-border spinner-border-sm me-1"></span>
+                                                            Registrar
+                                                        </button>
+                                                        <a routerLink="../login" class="btn btn-link">Cancelar</a>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-light"
+                                            (click)="modal.close('Close click')">Fechar</button>
+                                    </div>
+                                </ng-template>
+                                <button class="btn btn-outline-primary mb-2 me-2"
+                                    (click)="openBackDropCustomClass(content)">
+                                    Registre-se
+                                </button>
+                            </div>
                         </div>
                     </form>
                 </div>
+            </div>
         </div>
     </div>
 </div>
-

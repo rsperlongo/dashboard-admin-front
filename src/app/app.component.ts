@@ -1,5 +1,5 @@
-import { Component, OnInit  } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import { NgbConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +7,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent  {
-  
+  constructor(ngbConfig: NgbConfig) {
+    ngbConfig.animation = false;
+  }
 }
