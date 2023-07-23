@@ -13,7 +13,7 @@
                     <form [formGroup]="form" (ngSubmit)="onSubmit()">
                         <div class="mb-3">
                             <label class="form-label">Usuário (e-mail)</label>
-                            <input type="text" formControlName="username" class="form-control" />
+                            <input type="email" formControlName="username" class="form-control" required />
                             <div *ngIf="username.invalid && (username.dirty || username.touched)"
                                 class="alert alert-danger mt-1">Campo usuário obrigatório
                             </div>
