@@ -7,7 +7,7 @@ import { NgbConfig } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent  {
-  title = 'dashboard-admin-frontend app is running!';
+  title = 'dashboard-admin-frontend';
   constructor(ngbConfig: NgbConfig) {
     ngbConfig.animation = false;
   }
