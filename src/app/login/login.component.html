@@ -10,7 +10,7 @@
             <h2>Para acessar a plataforma é necessário fazer o login de sua conta</h2>
             <div class="card">
                 <div class="card-body">
-                    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                    <form [formGroup]="form" (ngSubmit)="login()">
                         <div class="mb-3">
                             <label class="form-label">Usuário (e-mail)</label>
                             <input type="email" formControlName="username" class="form-control" required />
@@ -41,7 +41,7 @@
                                         <div class="card">
                                             <h4 class="card-header">Preencha o formulário</h4>
                                             <div class="card-body">
-                                                <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                                                <form [formGroup]="registerForm" (ngSubmit)="login()">
                                                     <div class="mb-3">
                                                         <label class="form-label">Nome</label>
                                                         <input type="text" formControlName="firstName"

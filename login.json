@@ -1,10 +1,26 @@
 {
-    "user": [
-        {   
-            "firstName": "Ricardo",
-            "lastName": "Sperlongo",
-            "username": "teste@teste.com",
-            "password": "lme363nc"
-        }
-    ]
+  "user": [
+    {
+      "id": "1",
+      "firstName": "Ricardo",
+      "lastName": "Sperlongo",
+      "username": "teste@teste.com",
+      "password": "lme363nc"
+    },
+    {
+      "username": "teste@teste.com",
+      "password": "lme363nc",
+      "id": "0KpvY_U"
+    },
+    {
+      "username": "teste@teste.com",
+      "password": "lme363nc",
+      "id": "3_UwKJH"
+    },
+    {
+      "username": "teste@teste.com",
+      "password": "lme363nc",
+      "id": "GK1Ov98"
+    }
+  ]
 }

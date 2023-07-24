@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -21,6 +22,7 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private modalService: NgbModal,
     private authService: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -68,13 +70,22 @@ export class LoginComponent implements OnInit {
     return this.registerForm.get('lastName')!;
   }
 
-  onSubmit() {
+  login() {
     this.submitted = true;
     // stop here if form is invalid
     if (this.form.invalid) {
       return;
     }
     this.loading = true;
+    this.authService.authenticate(this.username.value, this.password.value).subscribe(
+      () => {
+        this.router.navigate(['/dashboard']);
+      },
+      (error) => {
+        alert('Usuário ou senha inválida');
+        console.log(error);
+      }
+    )
   }
 
   openBackDropCustomClass(content: any) {
