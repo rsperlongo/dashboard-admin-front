@@ -11,6 +11,7 @@ export class UserService {
   private userSubject = new BehaviorSubject<User>({})
 
   constructor(private tokenService: TokenService) { 
+    //this.tokenService.getToken() && this.decodeJWT()
     if (this.tokenService.getToken()) {
       this.decodeJWT();
     }
