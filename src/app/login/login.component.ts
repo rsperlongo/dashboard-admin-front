@@ -79,7 +79,7 @@ export class LoginComponent implements OnInit {
     this.loading = true;
     this.authService.authenticate(this.username.value, this.password.value).subscribe(
       () => {
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['dashboard']);
       },
       (error) => {
         alert('Usuário ou senha inválida');

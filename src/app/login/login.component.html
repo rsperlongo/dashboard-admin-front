@@ -15,13 +15,13 @@
                             <label class="form-label">Usuário (e-mail)</label>
                             <input type="email" formControlName="username" class="form-control" required />
                             <div *ngIf="username.invalid && (username.dirty || username.touched)"
-                                class="alert alert-danger mt-1">Campo usuário obrigatório
+                                class="alert alert-danger mt-1">E-mal inválido
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Senha</label>
                                 <input type="password" formControlName="password" class="form-control" />
                                 <div *ngIf="password.invalid && (password.dirty || password.touched)"
-                                    class="alert alert-danger mt-1">Campo senha obrigatório
+                                    class="alert alert-danger mt-1">Senha tem que ter pelo menos 4 caracteres
                                 </div>
                             </div>
                             <div class="d-grid gap-2">
