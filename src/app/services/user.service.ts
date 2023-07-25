@@ -23,21 +23,21 @@ export class UserService {
     this.userSubject.next(user);
   }
 
-  returnUser() {
+  public returnUser() {
     return this.userSubject.asObservable();
   }
 
-  saveToken(token: string) {
+  public saveToken(token: string) {
     this.tokenService.saveToken(token);
     this.decodeJWT();
   }
 
-  logout() {
+  public logout() {
     this.tokenService.removeToken();
     this.userSubject.next({});
   }
 
-  isLoggedIn() {
+  public isLoggedIn() {
     return this.tokenService.getToken();
   }
 }
