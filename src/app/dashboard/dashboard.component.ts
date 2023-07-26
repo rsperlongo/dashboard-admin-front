@@ -1,8 +1,8 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from '../models';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,18 +10,20 @@ import { User } from '../models';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
-  private userSubject: BehaviorSubject<User | null>;
-  public user: Observable<User | null>;
 
-  constructor(private router: Router) {
+  private userSubject: BehaviorSubject<User | null>;
+  // public user: Observable<User | null>;
+  user: User | null;
+
+  constructor(private router: Router, private authService: AuthService) {
     this.userSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('user')!));
-    this.user = this.userSubject.asObservable();
+    this.user = this.authService.userValue;
   }
 
   logout() {
     localStorage.removeItem('user');
     this.userSubject.next(null);
-    this.router.navigate(['login']);
+    this.router.navigate(['/login']);
   }
 
 }
