@@ -1,1 +1,75 @@
-<p>register works!</p>
+<nav class="navbar mb-5" style="background-color: #e3f2fd;">
+    <div class="container-fluid">
+      <a class="navbar-brand">Navbar</a>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-4">
+            <h1>Como funciona</h1>
+            <ol>1) Registre-se para solicitar acesso à plataforma</ol>
+            <ol>2) Confirme a solicitação no e-mail de cadastro</ol>
+            <ol>3) Aguarde aprovação do administrado da plataforma após análise</ol>
+            
+        </div>
+        <div class="col-4 align-self-center">
+            <div class="card">
+                <h4 class="card-header">Preencha o formulário</h4>
+                <div class="card-body">
+                    <form [formGroup]="registerForm" (ngSubmit)="register()">
+                        <div class="mb-3">
+                            <label class="form-label">Nome</label>
+                            <input type="text" formControlName="firstName"
+                                class="form-control" />
+                            <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"
+                                class="alert alert-danger mt-1">Campo obrigatório
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Sobrenome</label>
+                            <input type="text" formControlName="lastName"
+                                class="form-control" />
+                            <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)"
+                                class="alert alert-danger mt-1">Campo Sobrenome obrigatório
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Usuário</label>
+                            <input type="text" formControlName="user"
+                                class="form-control" />
+                            <div *ngIf="user.invalid && (user.dirty || user.touched)"
+                                class="alert alert-danger mt-1">Campo usuário obrigatório
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Senha</label>
+                            <input type="password" formControlName="pass"
+                                class="form-control" required minlength="4" />
+                            <div *ngIf="pass.invalid && (pass.dirty || pass.touched)"
+                                class="alert alert-danger mt-1">Campo senha obrigatório
+                            </div>
+                            <div *ngIf="pass.errors?.['minlength']"
+                                class="alert alert-danger mt-1">
+                                Senha deve ter pelo menos 4 caracteres.
+                            </div>
+                        </div>
+                        <div>
+                            <button [disabled]="loading" class="btn btn-info">
+                                <span *ngIf="loading"
+                                    class="spinner-border spinner-border-sm me-1"></span>
+                                Registrar
+                            </button>
+                            <a routerLink="../login" class="btn btn-link">Cancelar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+</div>

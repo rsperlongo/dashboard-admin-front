@@ -52,6 +52,6 @@ export class AuthService {
   }
 
   register(user: User) {
-    return this.http.post(`${environment.apiURL}/register`, user);
+    return this.http.post(`${environment.apiURL}`, user);
   }
 }
