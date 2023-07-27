@@ -16,7 +16,7 @@ export class AuthService {
   private userSubject: BehaviorSubject<User | null>;
   public user: Observable<User | null>;
 
-  constructor(private http: HttpClient, private tokenService: TokenService, ) {
+  constructor(private http: HttpClient, private tokenService: TokenService) {
     this.userSubject = new BehaviorSubject(
       JSON.parse(localStorage.getItem('user')!)
     );
@@ -44,10 +44,14 @@ export class AuthService {
   }
 
   logout() {
-    this.isLoggedIn = false
+    this.isLoggedIn = false;
   }
-  
+
   public get userValue() {
     return this.userSubject.value;
-}
+  }
+
+  register(user: User) {
+    return this.http.post(`${environment.apiURL}/register`, user);
+  }
 }

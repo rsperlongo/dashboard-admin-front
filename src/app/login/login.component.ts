@@ -1,9 +1,10 @@
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
+import { first } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -23,6 +24,7 @@ export class LoginComponent implements OnInit {
     private modalService: NgbModal,
     private authService: AuthService,
     private router: Router,
+    private route: ActivatedRoute,
     private userService: UserService
   ) {}
 
@@ -78,15 +80,34 @@ export class LoginComponent implements OnInit {
       return;
     }
     this.loading = true;
-    this.authService.authenticate(this.username.value, this.password.value).subscribe(
-      () => {
-        this.router.navigate(['dashboard']);
+    this.authService.authenticate(this.username.value, this.password.value)
+    .subscribe({
+      next:() => {
+        this.router.navigate(['/dashboard'])
       },
-      (error) => {
-        alert('Usuário ou senha inválida');
-        console.log(error);
+      error: error => {
+        this.loading = false
       }
-    )
+    })
+  }
+
+  register() {
+    this.submitted = true;
+    // stop here if form is invalid
+    if (this.form.invalid) {
+      return;
+    }
+    this.loading = true;
+    this.authService.register(this.registerForm.value)
+    .pipe(first())
+    .subscribe({
+      next:() => {
+        this.router.navigate(['/register'], { relativeTo: this.route })
+      },
+      error: error => {
+        this.loading = false
+      }
+    })
   }
 
   openBackDropCustomClass(content: any) {

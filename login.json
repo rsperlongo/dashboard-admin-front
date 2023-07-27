@@ -11,6 +11,35 @@
       "username": "teste@teste.com",
       "password": "lme363nc",
       "id": "sZ7MmBM"
+    },
+    {
+      "username": "teste@teste.com",
+      "password": "lme363nc",
+      "id": "yR-F2j0"
+    },
+    {
+      "username": "teste@teste.com",
+      "password": "lme363nc",
+      "id": "WS5KO_K"
+    },
+    {
+      "username": "teste@teste.com",
+      "password": "lme363nc",
+      "id": "31hrEiM"
+    },
+    {
+      "username": "teste@teste.com",
+      "password": "lme363nc",
+      "id": "293owrZ"
+    }
+  ],
+  "register": [
+    {
+      "id": "2",
+      "firstName": "Carmem",
+      "lastName": "Sperlongo",
+      "username": "carmem@teste.com",
+      "password": "admin123"
     }
   ]
 }
