@@ -30,75 +30,7 @@
                                     Login
                                 </button>
                                 <p>Não é cadastrado? Clique registre-se agora!</p>
-                                <!-- Modal -->
-                                <ng-template #content let-modal>
-                                    <div class="modal-header">
-                                        <h4 class="modal-title">Registro de Usário</h4>
-                                        <button type="button" class="btn-close" aria-label="Fechar"
-                                            (click)="modal.dismiss('Cross click')"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="card">
-                                            <h4 class="card-header">Preencha o formulário</h4>
-                                            <div class="card-body">
-                                                <form [formGroup]="registerForm" (ngSubmit)="register()">
-                                                    <div class="mb-3">
-                                                        <label class="form-label">Nome</label>
-                                                        <input type="text" formControlName="firstName"
-                                                            class="form-control" />
-                                                        <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"
-                                                            class="alert alert-danger mt-1">Campo obrigatório
-                                                        </div>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label class="form-label">Sobrenome</label>
-                                                        <input type="text" formControlName="lastName"
-                                                            class="form-control" />
-                                                        <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)"
-                                                            class="alert alert-danger mt-1">Campo Sobrenome obrigatório
-                                                        </div>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label class="form-label">Usuário</label>
-                                                        <input type="text" formControlName="user"
-                                                            class="form-control" />
-                                                        <div *ngIf="user.invalid && (user.dirty || user.touched)"
-                                                            class="alert alert-danger mt-1">Campo usuário obrigatório
-                                                        </div>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label class="form-label">Senha</label>
-                                                        <input type="password" formControlName="pass"
-                                                            class="form-control" required minlength="4" />
-                                                        <div *ngIf="pass.invalid && (pass.dirty || pass.touched)"
-                                                            class="alert alert-danger mt-1">Campo senha obrigatório
-                                                        </div>
-                                                        <div *ngIf="pass.errors?.['minlength']"
-                                                            class="alert alert-danger mt-1">
-                                                            Senha deve ter pelo menos 4 caracteres.
-                                                        </div>
-                                                    </div>
-                                                    <div>
-                                                        <button [disabled]="loading" class="btn btn-info">
-                                                            <span *ngIf="loading"
-                                                                class="spinner-border spinner-border-sm me-1"></span>
-                                                            Registrar
-                                                        </button>
-                                                        <a routerLink="../login" class="btn btn-link">Cancelar</a>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-light"
-                                            (click)="modal.close('Close click')">Fechar</button>
-                                    </div>
-                                </ng-template>
-                                <button class="btn btn-outline-primary mb-2 me-2"
-                                    (click)="openBackDropCustomClass(content)">
-                                    Registre-se
-                                </button>
+                                <button type="button" class="btn btn-outline-info" (click)="redirectTo()">Registre-se</button>
                             </div>
                         </div>
                     </form>

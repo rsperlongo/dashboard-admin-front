@@ -13,7 +13,6 @@ export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
   loading = false;
   submitted = false;
-  content: any;
 
   constructor(
     private formBuilder: FormBuilder,

@@ -16,7 +16,6 @@ export class LoginComponent implements OnInit {
   form!: FormGroup;
   loading = false;
   submitted = false;
-  content: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -31,15 +30,8 @@ export class LoginComponent implements OnInit {
       username: ['', Validators.email],
       password: ['', Validators.minLength(4)],
     });
-    this.registerForm = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      user: ['', Validators.email],
-      pass: ['', Validators.minLength(4)],
-    });
   }
 
-  // convenience getter for easy access to form fields
   get f() {
     return this.form.controls;
   }
@@ -55,21 +47,6 @@ export class LoginComponent implements OnInit {
     return this.form.get('password')!;
   }
 
-  get user() {
-    return this.registerForm.get('user')!;
-  }
-
-  get pass() {
-    return this.registerForm.get('pass')!;
-  }
-
-  get firstName() {
-    return this.registerForm.get('firstName')!;
-  }
-
-  get lastName() {
-    return this.registerForm.get('lastName')!;
-  }
 
   login() {
     this.submitted = true;
@@ -89,26 +66,11 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  register() {
-    this.submitted = true;
-    // stop here if form is invalid
-    if (this.form.invalid) {
-      return;
-    }
-    this.loading = true;
-    this.authService.register(this.registerForm.value)
-    .pipe(first())
-    .subscribe({
-      next:() => {
-        this.router.navigate(['/register'], { relativeTo: this.route })
-      },
-      error: error => {
-        this.loading = false
-      }
-    })
-  }
-
   openBackDropCustomClass(content: any) {
     this.modalService.open(content, { backdropClass: 'light-blue-backdrop' });
+  }
+
+  redirectTo() {
+    this.router.navigate(['register'])
   }
 }
