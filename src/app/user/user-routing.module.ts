@@ -24,4 +24,4 @@ const routes: Routes = [
     exports: [],
     providers: [],
 })
-export class RegisterRoutingModule {}
+export class UserRoutingModule {}

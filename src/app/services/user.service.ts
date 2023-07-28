@@ -3,6 +3,8 @@ import { BehaviorSubject } from 'rxjs';
 import { User } from '../models';
 import { TokenService } from './token.service';
 import jwt_decode from 'jwt-decode';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'environment/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +12,7 @@ import jwt_decode from 'jwt-decode';
 export class UserService {
   private userSubject = new BehaviorSubject<User>({})
 
-  constructor(private tokenService: TokenService) { 
+  constructor(private tokenService: TokenService, private http: HttpClient) { 
     if (this.tokenService.getToken()) {
       this.decodeJWT();
     }
@@ -39,4 +41,8 @@ export class UserService {
   public isLoggedIn() {
     return this.tokenService.getToken();
   }
+
+  getAll() {
+    return this.http.get<User[]>(`${environment.apiURL}`);
+}
 }

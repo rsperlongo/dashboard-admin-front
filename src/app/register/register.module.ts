@@ -4,14 +4,13 @@ import { RegisterComponent } from './register.component';
 import { RegisterRoutingModule } from './register-routing.module';
 import { LoginRoutingModule } from '../login/login-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HeaderComponent } from '../components/header/header.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
 @NgModule({
   declarations: [
     RegisterComponent,
-    HeaderComponent
   ],
   imports: [
     CommonModule,
@@ -19,6 +18,7 @@ import { HeaderComponent } from '../components/header/header.component';
     LoginRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    SharedModule
   ]
 })
 export class RegisterModule { }
