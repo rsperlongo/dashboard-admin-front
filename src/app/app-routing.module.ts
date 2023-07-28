@@ -17,6 +17,10 @@ const routes: Routes = [
     loadChildren: () => import('./register/register.module').then(m => m.RegisterModule)
   },
   {
+    path: 'users',
+    loadChildren: () => import('./user/user.module').then(m => m.UserModule)
+  },
+  {
     path: '',
     pathMatch: 'full',
     redirectTo: 'login'

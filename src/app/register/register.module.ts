@@ -4,13 +4,14 @@ import { RegisterComponent } from './register.component';
 import { RegisterRoutingModule } from './register-routing.module';
 import { LoginRoutingModule } from '../login/login-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
+import { HeaderComponent } from '../components/header/header.component';
 
 
 
 @NgModule({
   declarations: [
     RegisterComponent,
+    HeaderComponent
   ],
   imports: [
     CommonModule,
@@ -18,7 +19,6 @@ import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
     LoginRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    NgbAlertModule
   ]
 })
 export class RegisterModule { }
