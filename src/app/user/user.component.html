@@ -1,31 +1,119 @@
 <app-header></app-header>
 <div class="container-fluid text-center">
-    <h1 class="mb-5">Lista de usuários</h1>
-    <div class="row">
-        <div class="col-4">
-
+  <h1 class="mb-5">Lista de usuários</h1>
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+      <table class="table table-hover table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Sobrenome</th>
+            <th scope="col">Usuário</th>
+            <th scope="col">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <th scope="row">{{ user.id }}</th>
+            <td>{{ user.firstName }}</td>
+            <td>{{ user.lastName }}</td>
+            <td>{{ user.user }}</td>
+            <td>
+              <button
+                class="btn btn-info btn-sm float-start"
+                placement="top"
+                ngbTooltip="Atualizar"
+                (click)="open(content)"
+              >
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+              </button>
+              <button
+                class="btn btn-danger btn-sm"
+                placement="top"
+                ngbTooltip="Deletar"
+                (click)="deleteUser(user.id)"
+                [disabled]="user.isDeleting"
+              >
+                <i class="fa fa-trash" aria-hidden="true"></i>
+                <span *ngIf="user.isDeleting" class="spinner-border spinner-border-sm"></span>
+                <span *ngIf="!user.isDeleting"></span>
+              </button>
+              <button
+                class="btn btn-warning btn-sm float-end"
+                placement="top"
+                ngbTooltip="Pendente"
+              >
+                <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- Modal -->
+      <ng-template #content let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title">Atualização de Usuário</h4>
+          <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
         </div>
-        <div class="col-4">
-            <table class="table table-hover table-bordered">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Sobrenome</th>
-                    <th scope="col">Usuário</th>
-                    <th scope="col">Ações</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let user of users">
-                    <th scope="row">{{ user.id }}</th>
-                    <td>{{ user.firstName }}</td>
-                    <td>{{ user.lastName }}</td>
-                    <td>{{ user.user }}</td>
-                    <td><i class="fa-solid fa-trash"></i></td>
-                  </tr>
-                </tbody>
-              </table>
+        <div class="modal-body">
+          <form *ngIf="!loading" [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="mb-3 col">
+                    <label class="form-label">First Name</label>
+                    <input type="text" formControlName="firstName" class="form-control"/>
+                    <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"
+                                class="alert alert-danger mt-1">Campo obrigatório
+                            </div>
+                </div>
+                <div class="mb-3 col">
+                    <label class="form-label">Last Name</label>
+                    <input type="text" formControlName="lastName" class="form-control"/>
+                    <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)"
+                    class="alert alert-danger mt-1">Campo Sobrenome obrigatório
+                </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="mb-3 col">
+                    <label class="form-label">Username</label>
+                    <input type="text" formControlName="username" class="form-control" />
+                    <div *ngIf="username.invalid && (username.dirty || username.touched)"
+                                class="alert alert-danger mt-1">Campo usuário obrigatório
+                            </div>
+                </div>
+                <div class="mb-3 col">
+                    <label class="form-label">
+                        Senha
+                        <em *ngIf="id">(Deixe em branco caso não queira alterar a senha)</em>
+                    </label>
+                    <input type="password" formControlName="password" class="form-control"/>
+                    <div *ngIf="password.invalid && (password.dirty || password.touched)"
+                                class="alert alert-danger mt-1">Campo senha obrigatório
+                            </div>
+                            <div *ngIf="password.errors?.['minlength']"
+                                class="alert alert-danger mt-1">
+                                Senha deve ter pelo menos 4 caracteres.
+                            </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <button [disabled]="submitting" class="btn btn-primary">
+                    <span *ngIf="submitting" class="spinner-border spinner-border-sm me-1"></span>
+                    Save
+                </button>
+                <a routerLink="/users" class="btn btn-link">Cancel</a>
+            </div>
+        </form>
+        <div *ngIf="loading" class="text-center m-5">
+            <span class="spinner-border spinner-border-lg align-center"></span>
         </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Fechar</button>
+        </div>
+      </ng-template>
     </div>
+  </div>
 </div>
