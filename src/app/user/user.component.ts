@@ -13,6 +13,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   encapsulation: ViewEncapsulation.None,
 })
 export class UserComponent implements OnInit {
+  public isCollapsed = false;
   users?: any;
   content: any
   form!: FormGroup;

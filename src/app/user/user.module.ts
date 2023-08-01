@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { UserComponent } from './user.component';
 import { SharedModule } from '../shared/shared.module';
 import { UserRoutingModule } from './user-routing.module';
-import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbTooltipModule, NgbCollapseModule  } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
@@ -17,6 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SharedModule,
     UserRoutingModule,
     NgbTooltipModule,
+    NgbCollapseModule,
     ReactiveFormsModule,
     FormsModule,
   ]
