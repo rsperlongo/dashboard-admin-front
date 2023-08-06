@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
-import { BehaviorSubject, Observable, map, tap } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, Observable, map } from 'rxjs';
 import { environment } from 'environment/environment';
 import { User } from '../models';
-import { TokenService } from './token.service';
 
 const API = environment.apiURL;
 
@@ -16,7 +15,7 @@ export class AuthService {
   private userSubject: BehaviorSubject<User | null>;
   public user: Observable<User | null>;
 
-  constructor(private http: HttpClient, private tokenService: TokenService) {
+  constructor(private http: HttpClient) {
     this.userSubject = new BehaviorSubject(
       JSON.parse(localStorage.getItem('user')!)
     );

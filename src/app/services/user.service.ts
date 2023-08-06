@@ -47,7 +47,7 @@ export class UserService {
   }
 
   getAll() {
-    return this.http.get<User[]>(`${environment.apiURL}`);
+    return this.http.get<User[]>(`${environment.api_users}`);
   }
 
   getById(id: string) {
