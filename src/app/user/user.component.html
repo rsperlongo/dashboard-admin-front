@@ -18,8 +18,8 @@
           <tr *ngFor="let user of users">
             <th scope="row">{{ user._id }}</th>
             <td>{{ user.username }}</td>
+            <td>{{ user.firstName }}</td>
             <td>{{ user.lastName }}</td>
-            <td>{{ user.user }}</td>
             <td>
               <button
                 class="btn btn-info btn-sm float-start"
