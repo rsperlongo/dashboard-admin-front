@@ -57,7 +57,7 @@ export class UserService {
   update(id: string, params: any) {
     return this.http.put(`${environment.apiURL}/${id}`, params).pipe(
       map((x) => {
-        if (id == this.userValue?._id) {
+        if (id == this.userValue?.id) {
           const user = { ...this.userValue, ...params };
           localStorage.setItem('user', JSON.stringify(user));
 
@@ -71,7 +71,7 @@ export class UserService {
   delete(id: string) {
     return this.http.delete(`${environment.api_users}/${id}`).pipe(
       map((x) => {
-        if (id == this.userValue?._id) {
+        if (id == this.userValue?.id) {
           this.logout();
         }
         return x;
