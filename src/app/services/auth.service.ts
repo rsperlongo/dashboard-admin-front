@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable, map } from 'rxjs';
 import { environment } from 'environment/environment';
 import { User } from '../models';
 
 const API = environment.apiURL;
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+};
 
 @Injectable({
   providedIn: 'root',
@@ -50,7 +54,21 @@ export class AuthService {
     return this.userSubject.value;
   }
 
-  register(user: User) {
-    return this.http.post(`${environment.apiURL}`, user);
+  register(
+    username: string,
+    password: string,
+    firstName: string,
+    lastName: string
+  ): Observable<any> {
+    return this.http.post(
+      `${environment.apiUrl}/auth/register`,
+      {
+        username,
+        password,
+        lastName,
+        firstName,
+      },
+      httpOptions
+    );
   }
 }

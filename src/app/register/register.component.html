@@ -14,6 +14,34 @@
                 <div class="card-body">
                     <form [formGroup]="registerForm" (ngSubmit)="register()">
                         <div class="mb-3">
+                            <div class="mb-3">
+                                <label class="form-label">Usuário</label>
+                                <input type="text" formControlName="username"
+                                    class="form-control" />
+                                <div *ngIf="username.invalid && (username.dirty || username.touched)"
+                                    class="alert alert-danger mt-1">Campo usuário obrigatório
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Senha</label>
+                                <input type="password" formControlName="password"
+                                    class="form-control" required minlength="4" />
+                                <div *ngIf="password.invalid && (password.dirty || password.touched)"
+                                    class="alert alert-danger mt-1">Campo senha obrigatório
+                                </div>
+                                <div *ngIf="password.errors?.['minlength']"
+                                    class="alert alert-danger mt-1">
+                                    Senha deve ter pelo menos 4 caracteres.
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Sobrenome</label>
+                                <input type="text" formControlName="lastName"
+                                    class="form-control" />
+                                <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)"
+                                    class="alert alert-danger mt-1">Campo Sobrenome obrigatório
+                                </div>
+                            </div>
                             <label class="form-label">Nome</label>
                             <input type="text" formControlName="firstName"
                                 class="form-control" />
@@ -21,34 +49,9 @@
                                 class="alert alert-danger mt-1">Campo obrigatório
                             </div>
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label">Sobrenome</label>
-                            <input type="text" formControlName="lastName"
-                                class="form-control" />
-                            <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)"
-                                class="alert alert-danger mt-1">Campo Sobrenome obrigatório
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Usuário</label>
-                            <input type="text" formControlName="user"
-                                class="form-control" />
-                            <div *ngIf="user.invalid && (user.dirty || user.touched)"
-                                class="alert alert-danger mt-1">Campo usuário obrigatório
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Senha</label>
-                            <input type="password" formControlName="pass"
-                                class="form-control" required minlength="4" />
-                            <div *ngIf="pass.invalid && (pass.dirty || pass.touched)"
-                                class="alert alert-danger mt-1">Campo senha obrigatório
-                            </div>
-                            <div *ngIf="pass.errors?.['minlength']"
-                                class="alert alert-danger mt-1">
-                                Senha deve ter pelo menos 4 caracteres.
-                            </div>
-                        </div>
+                        
+                        
+                        
                         <div>
                             <button [disabled]="loading" class="btn btn-info">
                                 <span *ngIf="loading"

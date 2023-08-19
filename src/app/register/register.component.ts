@@ -25,17 +25,17 @@ export class RegisterComponent implements OnInit {
     this.registerForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      user: ['', Validators.email],
-      pass: ['', Validators.minLength(4)],
+      username: ['', Validators.email],
+      password: ['', Validators.minLength(4)],
     });
   }
 
-  get user() {
-    return this.registerForm.get('user')!;
+  get username() {
+    return this.registerForm.get('username')!;
   }
 
-  get pass() {
-    return this.registerForm.get('pass')!;
+  get password() {
+    return this.registerForm.get('password')!;
   }
 
   get firstName() {
@@ -53,7 +53,7 @@ export class RegisterComponent implements OnInit {
       return;
     }
     this.loading = true;
-    this.authService.register(this.registerForm.value)
+    this.authService.register(this.firstName.value, this.lastName.value, this.username.value, this.password.value)
     .pipe(first())
     .subscribe({
       next:() => {
