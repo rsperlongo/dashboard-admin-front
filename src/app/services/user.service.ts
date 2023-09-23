@@ -47,15 +47,15 @@ export class UserService {
   }
 
   getAll() {
-    return this.http.get<User[]>(`${environment.api_users}`);
+    return this.http.get<User[]>(`${environment.apiUrl}/users`);
   }
 
   getById(id: string) {
-    return this.http.get<User>(`${environment.apiURL}/${id}`);
+    return this.http.get<User>(`${environment.apiUrl}/${id}`);
   }
 
   update(id: string, params: any) {
-    return this.http.put(`${environment.apiURL}/${id}`, params).pipe(
+    return this.http.put(`${environment.apiUrl}/${id}`, params).pipe(
       map((x) => {
         if (id == this.userValue?.id) {
           const user = { ...this.userValue, ...params };
@@ -69,7 +69,7 @@ export class UserService {
   }
 
   delete(id: string) {
-    return this.http.delete(`${environment.api_users}/${id}`).pipe(
+    return this.http.delete(`${environment.apiUrl}/${id}`).pipe(
       map((x) => {
         if (id == this.userValue?.id) {
           this.logout();

@@ -40,10 +40,8 @@ export class UserComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
 
     this.form = this.formBuilder.group({
-      username: ['', Validators.required],
+      email: ['', Validators.required],
       password: ['', [Validators.minLength(4)]],
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required]
     });
 
     this.title = 'Add User';
@@ -62,20 +60,12 @@ export class UserComponent implements OnInit {
 
   get f() { return this.form.controls; }
 
-  get username() {
-    return this.form.get('username')!;
+  get email() {
+    return this.form.get('email')!;
   }
 
   get password() {
     return this.form.get('password')!;
-  }
-
-  get firstName() {
-    return this.form.get('firstName')!;
-  }
-
-  get lastName() {
-    return this.form.get('lastName')!;
   }
 
   onSubmit() {
@@ -101,7 +91,7 @@ export class UserComponent implements OnInit {
   private saveUser() {
     return this.id
         ? this.userService.update(this.id!, this.form.value)
-        : this.authService.register(this.firstName.value, this.lastName.value, this.username.value, this.password.value);
+        : this.authService.register(this.email.value, this.password.value);
   }
 
   deleteUser(id: string) {

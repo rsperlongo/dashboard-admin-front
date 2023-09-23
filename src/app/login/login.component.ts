@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.formBuilder.group({
-      username: ['', Validators.email],
+      email: ['', Validators.email],
       password: ['', Validators.minLength(4)],
     });
   }
@@ -37,8 +37,8 @@ export class LoginComponent implements OnInit {
     return this.form.controls;
   }
 
-  get username() {
-    return this.form.get('username')!;
+  get email() {
+    return this.form.get('email')!;
   }
 
   get password() {
@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
       return;
     }
     this.loading = true;
-    this.authService.authenticate(this.username.value, this.password.value)
+    this.authService.authenticate(this.email.value, this.password.value)
     .subscribe({
       next:() => {
         this.router.navigate(['/dashboard'])

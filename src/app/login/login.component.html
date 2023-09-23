@@ -13,8 +13,8 @@
                     <form [formGroup]="form" (ngSubmit)="login()">
                         <div class="mb-3">
                             <label class="form-label">Usuário (e-mail)</label>
-                            <input type="email" formControlName="username" class="form-control" required />
-                            <div *ngIf="username.invalid && (username.dirty || username.touched)"
+                            <input type="email" formControlName="email" class="form-control" required />
+                            <div *ngIf="email.invalid && (email.dirty || email.touched)"
                                 class="alert alert-danger mt-1">E-mal inválido
                             </div>
                             <div class="mb-3">

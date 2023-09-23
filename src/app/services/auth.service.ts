@@ -4,7 +4,7 @@ import { BehaviorSubject, Observable, map } from 'rxjs';
 import { environment } from 'environment/environment';
 import { User } from '../models';
 
-const API = environment.apiURL;
+const API = environment.apiUrl;
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -26,12 +26,12 @@ export class AuthService {
     this.user = this.userSubject.asObservable();
   }
 
-  authenticate(username: string, password: string) {
+  authenticate(email: string, password: string) {
     return this.http
       .post(
-        `${API}`,
+        `${API}/auth/login`,
         {
-          username,
+          email,
           password,
         },
         { observe: 'response' }
@@ -55,18 +55,14 @@ export class AuthService {
   }
 
   register(
-    username: string,
+    email: string,
     password: string,
-    firstName: string,
-    lastName: string
   ): Observable<any> {
     return this.http.post(
       `${environment.apiUrl}/auth/register`,
       {
-        username,
+        email,
         password,
-        lastName,
-        firstName,
       },
       httpOptions
     );
